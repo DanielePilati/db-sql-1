@@ -50,6 +50,8 @@ select *
 from degrees 
 where level = 'magistrale';
 
+prova individuale con join 
+
 select *
 from courses c
 join degrees d on c.degree_id = d.id 
@@ -88,8 +90,24 @@ from exam_student
 group by exam_id 
 order by exam_id ;
 
+prova individuale per mostrare il nome del corso di ogni esame e informazioni su l'esame oltre alla media
+
+select c.name , avg(es.vote) as media_voto , e.*
+from exam_student es 
+join exams e  on es.exam_id = e.id 
+join courses c on e.course_id = c.id 
+group by e.id 
+order by c.name ;
+
 12. Contare quanti corsi di laurea ci sono per ogni dipartimento
 
 select department_id , count(id) as numero_corsi_laurea
 from degrees d 
 group by department_id ;
+
+prova individuale con join per mostrare il nome del dipartimento
+
+select d2.name , count(d.id) as numero_corsi_laurea
+from degrees d 
+join departments d2 on d2.id = d.department_id 
+group by d2.name ;
