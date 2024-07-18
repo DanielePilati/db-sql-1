@@ -19,8 +19,7 @@ where cfu > 10;
 
 select *
 from students 
-where year(date_of_birth) >= 1996 
-order by date_of_birth ;
+where timestampdiff(year, `students`.date_of_birt, curdate()) = 30;
 
 
 4. Selezionare tutti i corsi del primo semestre del primo anno di un qualsiasi corso di
